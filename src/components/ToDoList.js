@@ -23,12 +23,12 @@ const ToDoList = () => {
       dataIndex: "index",
       valueType: "indexBorder",
       width: 48,
+      responsive: ['xxl', 'xl', 'lg', 'md'],
     },
     {
       title: "Title",
       dataIndex: "title",
       search: true,
-      width: "15%",
       formItemProps: {
         rules: [
           {
@@ -43,12 +43,12 @@ const ToDoList = () => {
         ],
       },
       sorter: (a, b) => a.title.localeCompare(b.title),
+      responsive: ['xxl', 'xl', 'lg', 'md', 'sm', 'xs'],
     },
     {
       title: "Description",
       dataIndex: "description",
       search: true,
-      width: "20%",
       formItemProps: {
         rules: [
           {
@@ -63,6 +63,7 @@ const ToDoList = () => {
         ],
       },
       sorter: (a, b) => a.description.localeCompare(b.description),
+      responsive: ['xxl', 'xl', 'lg', 'md'],
     },
     {
       title: "Status",
@@ -71,7 +72,6 @@ const ToDoList = () => {
       onFilter: true,
       valueType: "select",
       search: true,
-      width: "10%",
       formItemProps: {
         rules: [
           {
@@ -98,6 +98,7 @@ const ToDoList = () => {
           status: "Processing",
         },
       },
+      responsive: ['xxl', 'xl', 'lg', 'md', 'sm', 'xs'],
     },
     {
       title: "Tags",
@@ -112,6 +113,7 @@ const ToDoList = () => {
       render: (_, row) =>
         row.tag &&
         row.tag.map((item) => <Tag key={item.key}>{item.label}</Tag>),
+      responsive: ['xxl', 'xl', 'lg'],
     },
     {
       title: "Creation time",
@@ -119,6 +121,7 @@ const ToDoList = () => {
       valueType: "date",
       sorter: (a, b) => new Date(a.timestamp) - new Date(b.timestamp),
       editable: false,
+      responsive: ['xxl', 'xl', 'lg', 'md'],
     },
     {
       title: "Due Date",
@@ -126,6 +129,7 @@ const ToDoList = () => {
       valueType: "date",
       search: true,
       sorter: (a, b) => new Date(a.dueDate) - new Date(b.dueDate),
+      responsive: ['xxl', 'xl', 'lg', 'md', 'sm', 'xs'],
     },
     {
       title: "Operation",
@@ -151,6 +155,7 @@ const ToDoList = () => {
           </Button>
         </Popconfirm>,
       ],
+      responsive: ['xxl', 'xl', 'lg', 'md', 'sm'],
     },
   ];
 
@@ -186,7 +191,7 @@ const ToDoList = () => {
           </Title>
         </Space>
 
-        <Content style={{ padding: "0 50px" }}>
+        <Content style={{ padding: "0 3%" }}>
           <EditableProTable
             columns={columns}
             actionRef={actionRef}
