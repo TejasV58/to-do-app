@@ -1,0 +1,37 @@
+export const defaultData = [
+    {
+      id: new Date('2023-01-01').getTime().toString(),
+      status: "done",
+      timestamp: new Date('2023-01-01').toDateString(),
+      title: "Buy groceries",
+      description: "Buy vegetables, fruits, biscuits, snacks and Rice",
+      dueDate: new Date('2023-01-02').toDateString(),
+      tag: [{ key: 'new',label: 'chores' },{ key: 'new_0',label: 'medium-priority' }],
+    },
+    {
+      id: new Date('2023-01-02').getTime().toString(),
+      status: "overdue",
+      timestamp: new Date('2023-01-02').toDateString(),
+      title: "Complete Assignments",
+      description: "Complete DSA lab assignment 2 and 3.",
+      dueDate: new Date('2023-01-02').toDateString(),
+      tag: [{ key: 'new',label: 'college' }],
+    },
+    {
+      id: new Date('2023-01-03').getTime().toString(),
+      status: "open",
+      timestamp: new Date('2023-01-02').toDateString(),
+      title: "Go to Dermatologist",
+      description: "-",
+      tag: [{ key: 'new',label: 'health' },{ key: 'new_2',label: 'self' }],
+    },
+    {
+      id: new Date('2023-01-06').getTime().toString(),
+      status: "working",
+      timestamp: new Date().toDateString(),
+      title: "complete DBMS project",
+      description: "1. Documentation, 2. Creating web app, 3. testing app, 4. deploying",
+      dueDate: new Date("2023-01-30").toDateString(),
+      tag: [{ key: 'new_0',label: 'college' },{ key: 'new_1',label: 'important' }],
+    },
+  ]
