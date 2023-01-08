@@ -63,7 +63,7 @@ const ToDoList = () => {
         ],
       },
       sorter: (a, b) => a.description.localeCompare(b.description),
-      responsive: ['xxl', 'xl', 'lg', 'md'],
+      responsive: ['xxl', 'xl', 'lg', 'md', 'sm'],
     },
     {
       title: "Status",
@@ -191,7 +191,7 @@ const ToDoList = () => {
           </Title>
         </Space>
 
-        <Content style={{ padding: "0 3%" }}>
+        <Content style={{ padding: "0 2%" }}>
           <EditableProTable
             columns={columns}
             actionRef={actionRef}
@@ -270,7 +270,7 @@ const ToDoList = () => {
             }}
             toolBarRender={() => [
               <Space>
-                <Button
+                <Button 
                   type="primary"
                   onClick={() => {
                     actionRef.current?.addEditRecord?.({
