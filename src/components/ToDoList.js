@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react";
 // ant design imports
 import { PlusOutlined, CheckSquareOutlined } from "@ant-design/icons";
 import { EditableProTable } from "@ant-design/pro-components";
-import { Button, Space, Tag, Typography, Input, Layout, ConfigProvider, Popconfirm } from "antd";
+import { Button, Space, Tag, Typography, Input, Layout, ConfigProvider, Popconfirm, Form } from "antd";
 import enUS from "antd/locale/en_US";
 
 // importing components
@@ -129,6 +129,20 @@ const ToDoList = () => {
       valueType: "date",
       search: true,
       sorter: (a, b) => new Date(a.dueDate) - new Date(b.dueDate),
+      formItemProps: {
+        rules: [{
+          validator: (values) => {
+            const { field } = values
+            const current = editForm.getFieldValue(`${field.split(".")[0]}`) || {}
+            const currentDate = new Date(new Date().toDateString())
+            const dueDate = new Date(current.dueDate.toDate().toDateString())
+            
+            if( dueDate.getTime() < currentDate.getTime() )
+              return Promise.reject(new Error("Due Date cannot be before today's Date" ));
+            return Promise.resolve();
+          },
+        }]
+      },
       responsive: ['xxl', 'xl', 'lg', 'md', 'sm', 'xs'],
     },
     {
@@ -163,6 +177,7 @@ const ToDoList = () => {
   const actionRef = useRef();
   const [dataSource, setDataSource] = useState(defaultData);
   const [editableKeys, setEditableRowKeys] = useState([]);
+  const [editForm] = Form.useForm()
 
   // To delete a task
   const handleDelete = (id) => {
@@ -261,6 +276,7 @@ const ToDoList = () => {
             onChange={setDataSource}
             // Used for Editing Row Data
             editable={{
+              form: editForm,
               type: "multiple",
               editableKeys,
               onSave: async (data) => {
