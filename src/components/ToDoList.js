@@ -136,9 +136,9 @@ const ToDoList = () => {
             const current = editForm.getFieldValue(`${field.split(".")[0]}`) || {}
             const currentDate = new Date(new Date().toDateString())
             const dueDate = new Date(current.dueDate.toDate().toDateString())
-            
-            if( dueDate.getTime() < currentDate.getTime() )
-              return Promise.reject(new Error("Due Date cannot be before today's Date" ));
+            const timestamp = new Date(current.timestamp.toDate().toDateString())
+            if( dueDate.getTime() < currentDate.getTime() || dueDate.getTime() < timestamp.getTime())
+              return Promise.reject(new Error("Due Date cannot be before today's date or creation date" ));
             return Promise.resolve();
           },
         }]
